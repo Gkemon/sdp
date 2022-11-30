@@ -24,12 +24,12 @@ repositories {
 }
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 32
+        targetSdkVersion 33
     }
 }
 
@@ -78,6 +78,46 @@ class SDPFactory extends DefaultTask {
             printWriter.close()
         }
     }
+
+    @Override
+    void setActions(List<Action<? super Task>> actions) {
+
+    }
+
+    @Override
+    void onlyIf(Spec<? super Task> onlyIfSpec) {
+
+    }
+
+    @Override
+    void setOnlyIf(Spec<? super Task> onlyIfSpec) {
+
+    }
+
+    @Override
+    Task doFirst(Action<? super Task> action) {
+        return null
+    }
+
+    @Override
+    Task doFirst(String actionName, Action<? super Task> action) {
+        return null
+    }
+
+    @Override
+    Task doLast(Action<? super Task> action) {
+        return null
+    }
+
+    @Override
+    Task doLast(String actionName, Action<? super Task> action) {
+        return null
+    }
+
+    @Override
+    int compareTo(Task task) {
+        return 0
+    }
 }
 
 task createSDP(type: SDPFactory) {
@@ -111,32 +151,13 @@ publishing {
                         url = 'https://github.com/intuit/sdp/blob/master/LICENSE'
                     }
                 }
-                developers {
-                    developer {
-                        id = developerID
-                        name = developerName
-                        email = developerEmail
-                    }
-                }
-                scm {
-                    connection = 'scm:git@github.com:intuit/sdp.git'
-                    developerConnection = 'scm:git@github.com:intuit/sdp.git'
-                    url = 'https://github.com/intuit/sdp'
-                }
             }
         }
     }
     repositories {
         maven {
-            url sonatypeRepo
-            credentials {
-                username sonatypeUsername
-                password sonatypePassword
-            }
+
         }
     }
 }
 
-signing {
-    sign publishing.publications.release
-}
